@@ -21,6 +21,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('meals.index') }}">
+                Meals
+            </a>
+        </li>
+        <li>
             <a href="">
                 Logout
             </a>
