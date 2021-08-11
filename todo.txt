@@ -1,0 +1,4 @@
+TODO:
+
+- Products must have a category: nabiał, mięso etc.
+- Products should contain tags like: wysokobiałkowy etc.

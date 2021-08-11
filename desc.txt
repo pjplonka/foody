@@ -1,0 +1,8 @@
+New resource:
+
+- Controller
+- Model
+- migration
+- sidebar.blade.php
+- web.php (routes)
+- views
