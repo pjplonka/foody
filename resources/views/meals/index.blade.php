@@ -29,10 +29,22 @@
                         <tr>
                             <th scope="row">{{ $meal->id }}</th>
                             <td>{{ $meal->name }}</td>
-                            <td>{{ $meal->products->sum(function($product) { return $product->calories(); }) }}</td>
-                            <td>{{ $meal->products->sum(function($product) { return $product->protein(); }) }}</td>
-                            <td>{{ $meal->products->sum(function($product) { return $product->carbohydrates(); }) }}</td>
-                            <td>{{ $meal->products->sum(function($product) { return $product->fat(); }) }}</td>
+                            <td>
+                                {{ $meal->calories() }}
+                                ({{ round(($meal->calories() / $myGoal->caloriesPerDay()) * 100) }}%)
+                            </td>
+                            <td>
+                                {{ $meal->protein() }}
+                                ({{ \App\CaloriesCalculator::fatInPercentage($myGoal->caloriesPerDay(), $meal->protein()) }}%)
+                            </td>
+                            <td>
+                                {{ $meal->carbohydrates() }}
+                                ({{ \App\CaloriesCalculator::carbsInPercentage($myGoal->caloriesPerDay(), $meal->carbohydrates()) }}%)
+                            </td>
+                            <td>
+                                {{ $meal->fat() }}
+                                ({{ \App\CaloriesCalculator::fatInPercentage($myGoal->caloriesPerDay(), $meal->fat()) }}%)
+                            </td>
                             <td class="actions">
                                 <a href="{{ route('meals.edit', ['meal' => $meal->id]) }}" class="mr-2"><i
                                         class="bi-pencil icon"></i></a>

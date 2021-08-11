@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meal;
+use App\Models\MyGoal;
 use Illuminate\Http\Request;
 
 class MealsController extends Controller
@@ -11,6 +12,7 @@ class MealsController extends Controller
     {
         return view('meals.index', [
             'meals' => Meal::all(),
+            'myGoal' => MyGoal::get(),
         ]);
     }
 

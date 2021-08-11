@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\CaloriesCalculator;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -20,6 +21,6 @@ class Product extends Model
 
     public function calories(): int
     {
-        return ($this->protein * 4) + ($this->carbohydrates * 4) + ($this->fat * 9);
+        return CaloriesCalculator::calculate($this->protein, $this->carbohydrates, $this->fat);
     }
 }

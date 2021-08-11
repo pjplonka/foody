@@ -11,8 +11,8 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('users.index') }}">
-                Users
+            <a href="{{ route('my-goals.index') }}">
+                My goal
             </a>
         </li>
         <li>
@@ -23,6 +23,11 @@
         <li>
             <a href="{{ route('meals.index') }}">
                 Meals
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('users.index') }}">
+                Users
             </a>
         </li>
         <li>

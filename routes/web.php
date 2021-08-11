@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MealProductController;
 use App\Http\Controllers\MealsController;
+use App\Http\Controllers\MyGoalController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ Route::get('/', function () {
 Route::resource('users', UsersController::class);
 Route::resource('products', ProductsController::class);
 Route::resource('meals', MealsController::class);
+Route::resource('my-goals', MyGoalController::class);
 
 Route::get('/meals/{meal}/products/create', [MealProductController::class, 'create'])->name('meal-products.create');
 Route::post('/meals/{meal}/products', [MealProductController::class, 'store'])->name('meal-products.store');

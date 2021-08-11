@@ -22,4 +22,32 @@ class Meal extends Model
     {
         return $this->hasMany(MealProduct::class);
     }
+
+    public function calories(): float
+    {
+        return $this->products->sum(function($product) {
+            return $product->calories();
+        });
+    }
+
+    public function protein(): float
+    {
+        return $this->products->sum(function($product) {
+            return $product->protein();
+        });
+    }
+
+    public function carbohydrates(): float
+    {
+        return $this->products->sum(function($product) {
+            return $product->carbohydrates();
+        });
+    }
+
+    public function fat(): float
+    {
+        return $this->products->sum(function($product) {
+            return $product->fat();
+        });
+    }
 }
