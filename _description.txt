@@ -1,6 +1,6 @@
 New resource:
 
-- Controller
+- Controller - update store and update methods validation rules
 - Model
 - migration
 - sidebar.blade.php
