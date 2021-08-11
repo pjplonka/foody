@@ -17,10 +17,6 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Calories</th>
-                        <th scope="col">Protein</th>
-                        <th scope="col">Carbohydrates</th>
-                        <th scope="col">Fat</th>
                         <th scope="col">Actions</th>
                     </tr>
                     </thead>
@@ -29,10 +25,6 @@
                         <tr>
                             <th scope="row">{{ $meal->id }}</th>
                             <td>{{ $meal->name }}</td>
-                            <td>{{ $meal->products->sum(function($product) { return $product->calories(); }) }}</td>
-                            <td>{{ $meal->products->sum(function($product) { return $product->protein(); }) }}</td>
-                            <td>{{ $meal->products->sum(function($product) { return $product->carbohydrates(); }) }}</td>
-                            <td>{{ $meal->products->sum(function($product) { return $product->fat(); }) }}</td>
                             <td class="actions">
                                 <a href="{{ route('meals.edit', ['meal' => $meal->id]) }}" class="mr-2"><i
                                         class="bi-pencil icon"></i></a>
