@@ -16,6 +16,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('days.index') }}">
+                Days
+            </a>
+        </li>
+        <li>
             <a href="{{ route('products.index') }}">
                 Products
             </a>

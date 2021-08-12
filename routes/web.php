@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DayMealsController;
+use App\Http\Controllers\DaysController;
 use App\Http\Controllers\MealProductController;
 use App\Http\Controllers\MealsController;
 use App\Http\Controllers\MyGoalController;
@@ -26,9 +28,14 @@ Route::resource('users', UsersController::class);
 Route::resource('products', ProductsController::class);
 Route::resource('meals', MealsController::class);
 Route::resource('my-goals', MyGoalController::class);
+Route::resource('days', DaysController::class);
 
 Route::get('/meals/{meal}/products/create', [MealProductController::class, 'create'])->name('meal-products.create');
 Route::post('/meals/{meal}/products', [MealProductController::class, 'store'])->name('meal-products.store');
 Route::get('meal-products/{mealProduct}', [MealProductController::class, 'edit'])->name('meal-products.edit');
 Route::put('meal-products/{mealProduct}', [MealProductController::class, 'update'])->name('meal-products.update');
 Route::delete('meal-products/{mealProduct}', [MealProductController::class, 'destroy'])->name('meal-products.destroy');
+
+Route::get('/days/{day}/meals/create', [DayMealsController::class, 'create'])->name('day-meals.create');
+Route::post('/days/{day}/meals', [DayMealsController::class, 'store'])->name('day-meals.store');
+Route::delete('/days/{day}/meals/{mealId}', [DayMealsController::class, 'destroy'])->name('day-meals.destroy');
