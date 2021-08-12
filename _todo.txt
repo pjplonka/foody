@@ -8,3 +8,15 @@ TODO:
 - Add fiber
 
 - Add sugar (carbs includes sugar)
+
+- Edit and delete icon should have tooltip
+
+- Add breadcrumbs
+
+- need to separate protein from animal and plant etc. and count it together but mention how many on each source
+
+- adding meal to day should be standalone meal in database (customizable). Maybe it should be : add from predefined, add from scratch
+
+- modals should appear definitely
+
+- all destroy views should hold @csrf and @method('delete')

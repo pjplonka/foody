@@ -2,7 +2,7 @@ New resource:
 
 - Model
 - migration
-- Controller - update store and update methods validation rules
-- sidebar.blade.php
 - web.php (routes)
+- sidebar.blade.php
+- Controller - update store and update methods validation rules
 - views
