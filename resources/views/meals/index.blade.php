@@ -35,15 +35,15 @@
                             </td>
                             <td>
                                 {{ $meal->protein() }}
-                                ({{ \App\CaloriesCalculator::fatInPercentage($myGoal->caloriesPerDay(), $meal->protein()) }}%)
+                                ({{ round(($meal->protein() / $myGoal->protein) * 100) }}%)
                             </td>
                             <td>
                                 {{ $meal->carbohydrates() }}
-                                ({{ \App\CaloriesCalculator::carbsInPercentage($myGoal->caloriesPerDay(), $meal->carbohydrates()) }}%)
+                                ({{ round(($meal->carbohydrates() / $myGoal->carbohydrates) * 100) }}%)
                             </td>
                             <td>
                                 {{ $meal->fat() }}
-                                ({{ \App\CaloriesCalculator::fatInPercentage($myGoal->caloriesPerDay(), $meal->fat()) }}%)
+                                ({{ round(($meal->fat() / $myGoal->fat) * 100) }}%)
                             </td>
                             <td class="actions">
                                 <a href="{{ route('meals.edit', ['meal' => $meal->id]) }}" class="mr-2"><i

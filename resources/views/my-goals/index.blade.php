@@ -14,9 +14,9 @@
             <div class="card-body">
 
                 <div>
-                    Protein per day: {{ $myGoal->protein }}g ({{ $myGoal->stats()['proteinInPercentage'] }}%)<br>
-                    Carbs per day: {{ $myGoal->carbohydrates }}g ({{ $myGoal->stats()['carbsInPercentage'] }}%)<br>
-                    Fat per day: {{ $myGoal->fat }}g ({{ $myGoal->stats()['fatInPercentage'] }}%)<br>
+                    Protein per day: {{ $myGoal->protein }}g ({{ round((($myGoal->protein * 4) / $myGoal->caloriesPerDay() ) * 100) }}%)<br>
+                    Carbs per day: {{ $myGoal->carbohydrates }}g ({{ round((($myGoal->carbohydrates * 4) / $myGoal->caloriesPerDay() ) * 100) }}%)<br>
+                    Fat per day: {{ $myGoal->fat }}g ({{ round((($myGoal->fat * 9) / $myGoal->caloriesPerDay() ) * 100) }}%)<br>
                     -- <br>
                     Calories per day: {{ $myGoal->caloriesPerDay() }}<br>
                 </div>

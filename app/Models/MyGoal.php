@@ -39,28 +39,4 @@ class MyGoal extends Model
     {
         return CaloriesCalculator::calculate($this->protein, $this->carbohydrates, $this->fat);
     }
-
-    public function stats(): array
-    {
-        return [
-            'proteinInPercentage' => CaloriesCalculator::proteinInPercentage($this->caloriesPerDay(), $this->protein),
-            'carbsInPercentage' => CaloriesCalculator::carbsInPercentage($this->caloriesPerDay(), $this->carbohydrates),
-            'fatInPercentage' => CaloriesCalculator::fatInPercentage($this->caloriesPerDay(), $this->fat)
-        ];
-    }
-
-    public function proteinInPercentage(float $protein): int
-    {
-        return round((($protein * 4) / $this->caloriesPerDay()) * 100);
-    }
-
-    public function carbsInPercentage(float $carbs): int
-    {
-        return round((($carbs * 4) / $this->caloriesPerDay()) * 100);
-    }
-
-    public function fatInPercentage(float $fat): int
-    {
-        return round((($fat * 9) / $this->caloriesPerDay()) * 100);
-    }
 }
