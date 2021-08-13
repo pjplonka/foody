@@ -8,7 +8,7 @@ class CreateMealProductTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('meal_products', function (Blueprint $table) {
+        Schema::create('meal_product', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained();
             $table->foreignId('meal_id')->constrained();
@@ -19,6 +19,6 @@ class CreateMealProductTable extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('meal_products');
+        Schema::dropIfExists('meal_product');
     }
 }
