@@ -34,3 +34,5 @@ TODO:
 - create dashboard with TODAY + water + some graphs
 
 - dashboard - use common view for day (with days)
+
+- add body dimensions + ask for update (eg. every 7 days) + set goal for body dimension
