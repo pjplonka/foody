@@ -12,6 +12,7 @@ class CreateDayProductTable extends Migration
             $table->id();
             $table->foreignId('day_id')->constrained();
             $table->foreignId('product_id')->constrained();
+            $table->integer('weight');
             $table->timestamps();
         });
     }

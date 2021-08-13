@@ -10,7 +10,7 @@
 
         <div class="card mb-3">
             <div class="card-header">
-                <span>Meals for day {{ $day->date->format('d-m-Y') }}</span>
+                <span>Meals and products for day {{ $day->date->format('d-m-Y') }}</span>
                 <a class="float-right" href="{{ route('day-meals.create', ['day' => $day]) }}">Add meal</a>
                 <a class="float-right" href="{{ route('day-products.create', ['day' => $day]) }}">Add product</a>
             </div>
@@ -59,20 +59,22 @@
                     @foreach ($day->products as $product)
                         <tr>
                             <th scope="row">{{ $product->id }}</th>
-                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->name }} <small>({{ $product->pivot->weight }}g)</small></td>
                             <td>
-                                {{ $product->protein }}
+                                {{ $product->pivot->protein() }}
                             </td>
                             <td>
-                                {{ $product->carbohydrates }}
+                                {{ $product->pivot->carbohydrates() }}
                             </td>
                             <td>
-                                {{ $product->fat }}
+                                {{ $product->pivot->fat() }}
                             </td>
                             <td>
-                                {{ $product->calories() }}
+                                {{ $product->pivot->calories() }}
                             </td>
                             <td class="actions">
+                                <a href="{{ route('day-products.edit', ['dayProduct' => $product->pivot]) }}" class="mr-2"><i
+                                        class="bi-pencil icon"></i></a>
                                 <form method="post" style="display: inline"
                                       action="{{ route('day-products.destroy', ['day' => $day, 'productId' => $product->id]) }}">
                                     @csrf

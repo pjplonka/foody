@@ -31,14 +31,20 @@ class Day extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->using(DayProduct::class)->withPivot('id', 'weight');
     }
 
     public function calories(): float
     {
-        return $this->meals->sum(function (Meal $meal) {
+        $fromMeals = $this->meals->sum(function (Meal $meal) {
             return $meal->calories();
         });
+
+        $fromProducts = $this->products->sum(function (Product $product) {
+            return $product->pivot->calories();
+        });
+
+        return $fromMeals + $fromProducts;
     }
 
     public function protein(): float
@@ -48,7 +54,7 @@ class Day extends Model
         });
 
         $fromProducts = $this->products->sum(function (Product $product) {
-            return $product->protein;
+            return $product->pivot->protein();
         });
 
         return $fromMeals + $fromProducts;
@@ -61,7 +67,7 @@ class Day extends Model
         });
 
         $fromProducts = $this->products->sum(function (Product $product) {
-            return $product->carbohydrates;
+            return $product->pivot->carbohydrates();
         });
 
         return $fromMeals + $fromProducts;
@@ -74,7 +80,7 @@ class Day extends Model
         });
 
         $fromProducts = $this->products->sum(function (Product $product) {
-            return $product->fat;
+            return $product->pivot->fat();
         });
 
         return $fromMeals + $fromProducts;

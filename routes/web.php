@@ -44,3 +44,5 @@ Route::delete('/days/{day}/meals/{mealId}', [DayMealsController::class, 'destroy
 Route::get('/days/{day}/products/create', [DayProductsController::class, 'create'])->name('day-products.create');
 Route::post('/days/{day}/products', [DayProductsController::class, 'store'])->name('day-products.store');
 Route::delete('/days/{day}/products/{productId}', [DayProductsController::class, 'destroy'])->name('day-products.destroy');
+Route::get('day-products/{dayProduct}', [DayProductsController::class, 'edit'])->name('day-products.edit');
+Route::put('day-products/{dayProduct}', [DayProductsController::class, 'update'])->name('day-products.update');
