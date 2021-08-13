@@ -28,3 +28,5 @@ TODO:
 - list of products assigned to meal should be listed in show action instead of edit
 
 - add button and style to right top corner links
+
+- add select2 (or similar) to better search products and meals
