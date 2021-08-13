@@ -26,3 +26,5 @@ TODO:
 - day should be able to hold also products (like meals)
 
 - list of products assigned to meal should be listed in show action instead of edit
+
+- add button and style to right top corner links
