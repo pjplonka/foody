@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\WeighedProduct;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -18,35 +19,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class MealProduct extends Model
 {
+    use WeighedProduct;
+
     protected $guarded = ['id'];
 
     public function meal(): BelongsTo
     {
         return $this->belongsTo(Meal::class);
-    }
-
-    public function product(): BelongsTo
-    {
-        return $this->belongsTo(Product::class);
-    }
-
-    public function calories(): int
-    {
-        return $this->product->calories() * ($this->weight / 100);
-    }
-
-    public function protein(): float
-    {
-        return $this->product->protein * ($this->weight / 100);
-    }
-
-    public function carbohydrates(): float
-    {
-        return $this->product->carbohydrates * ($this->weight / 100);
-    }
-
-    public function fat(): float
-    {
-        return $this->product->fat * ($this->weight / 100);
     }
 }
