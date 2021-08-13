@@ -32,6 +32,8 @@
                                         class="bi-pencil icon"></i></a>
                                 <form method="post" style="display: inline"
                                       action="{{ route('products.destroy', ['product' => $product->id]) }}">
+                                    @csrf
+                                    @method('delete')
                                     <button class="delete-prompt" type="submit"
                                             style="border:none; background: none; cursor:pointer;"><i
                                             class="bi-trash icon"></i></button>
