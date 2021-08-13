@@ -22,3 +22,5 @@ TODO:
 - all destroy views should hold @csrf and @method('delete')
 
 - allow to update water drinking eg. divide daily requirement by 12 hours and add button 'Done'
+
+- day should be able to hold also products (like meals)
