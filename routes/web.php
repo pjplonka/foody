@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DayMealsController;
 use App\Http\Controllers\DayProductsController;
 use App\Http\Controllers\DaysController;
@@ -24,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('users', UsersController::class);
 Route::resource('products', ProductsController::class);

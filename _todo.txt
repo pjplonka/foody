@@ -32,3 +32,5 @@ TODO:
 - add select2 (or similar) to better search products and meals
 
 - create dashboard with TODAY + water + some graphs
+
+- dashboard - use common view for day (with days)

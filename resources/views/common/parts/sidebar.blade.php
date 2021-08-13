@@ -11,6 +11,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('dashboard') }}">
+                Dashboard
+            </a>
+        </li>
+        <li>
             <a href="{{ route('my-goals.index') }}">
                 My goal
             </a>
