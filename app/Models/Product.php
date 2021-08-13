@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\CaloriesCalculator;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $fat
  * @property int $carbohydrates
  * @method static Product create(array $data)
+ * @mixin Builder
  */
 class Product extends Model
 {

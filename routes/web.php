@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DayMealsController;
+use App\Http\Controllers\DayProductsController;
 use App\Http\Controllers\DaysController;
 use App\Http\Controllers\MealProductController;
 use App\Http\Controllers\MealsController;
@@ -39,3 +40,7 @@ Route::delete('meal-products/{mealProduct}', [MealProductController::class, 'des
 Route::get('/days/{day}/meals/create', [DayMealsController::class, 'create'])->name('day-meals.create');
 Route::post('/days/{day}/meals', [DayMealsController::class, 'store'])->name('day-meals.store');
 Route::delete('/days/{day}/meals/{mealId}', [DayMealsController::class, 'destroy'])->name('day-meals.destroy');
+
+Route::get('/days/{day}/products/create', [DayProductsController::class, 'create'])->name('day-products.create');
+Route::post('/days/{day}/products', [DayProductsController::class, 'store'])->name('day-products.store');
+Route::delete('/days/{day}/products/{productId}', [DayProductsController::class, 'destroy'])->name('day-products.destroy');

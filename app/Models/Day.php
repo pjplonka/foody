@@ -14,6 +14,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property Carbon $date
  * @property Meal[]|Collection $meals
+ * @property Product[]|Collection $products
  * @method static Day create(array $data)
  * @mixin Builder
  */
@@ -28,6 +29,11 @@ class Day extends Model
         return $this->belongsToMany(Meal::class);
     }
 
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class);
+    }
+
     public function calories(): float
     {
         return $this->meals->sum(function (Meal $meal) {
@@ -37,22 +43,40 @@ class Day extends Model
 
     public function protein(): float
     {
-        return $this->meals->sum(function (Meal $meal) {
+        $fromMeals = $this->meals->sum(function (Meal $meal) {
             return $meal->protein();
         });
+
+        $fromProducts = $this->products->sum(function (Product $product) {
+            return $product->protein;
+        });
+
+        return $fromMeals + $fromProducts;
     }
 
     public function carbohydrates(): float
     {
-        return $this->meals->sum(function (Meal $meal) {
+        $fromMeals = $this->meals->sum(function (Meal $meal) {
             return $meal->carbohydrates();
         });
+
+        $fromProducts = $this->products->sum(function (Product $product) {
+            return $product->carbohydrates;
+        });
+
+        return $fromMeals + $fromProducts;
     }
 
     public function fat(): float
     {
-        return $this->meals->sum(function (Meal $meal) {
+        $fromMeals = $this->meals->sum(function (Meal $meal) {
             return $meal->fat();
         });
+
+        $fromProducts = $this->products->sum(function (Product $product) {
+            return $product->fat;
+        });
+
+        return $fromMeals + $fromProducts;
     }
 }

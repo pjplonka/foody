@@ -11,7 +11,8 @@
         <div class="card mb-3">
             <div class="card-header">
                 <span>Meals for day {{ $day->date->format('d-m-Y') }}</span>
-                <a class="float-right" href="{{ route('day-meals.create', ['day' => $day]) }}">Add new meal</a>
+                <a class="float-right" href="{{ route('day-meals.create', ['day' => $day]) }}">Add meal</a>
+                <a class="float-right" href="{{ route('day-products.create', ['day' => $day]) }}">Add product</a>
             </div>
             <div class="card-body">
                 <table class="table table-borderless custom-table">
@@ -55,11 +56,36 @@
                             </td>
                         </tr>
                     @endforeach
+                    @foreach ($day->products as $product)
+                        <tr>
+                            <th scope="row">{{ $product->id }}</th>
+                            <td>{{ $product->name }}</td>
+                            <td>
+                                {{ $product->protein }}
+                            </td>
+                            <td>
+                                {{ $product->carbohydrates }}
+                            </td>
+                            <td>
+                                {{ $product->fat }}
+                            </td>
+                            <td>
+                                {{ $product->calories() }}
+                            </td>
+                            <td class="actions">
+                                <form method="post" style="display: inline"
+                                      action="{{ route('day-products.destroy', ['day' => $day, 'productId' => $product->id]) }}">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="delete-prompt" type="submit"
+                                            style="border:none; background: none; cursor:pointer;"><i
+                                            class="bi-trash icon"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                     <tfoot>
-                    @php
-
-                    @endphp
                     <tr>
                         <th scope="col">#</th>
                         <th></th>
