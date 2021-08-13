@@ -30,3 +30,5 @@ TODO:
 - add button and style to right top corner links
 
 - add select2 (or similar) to better search products and meals
+
+- create dashboard with TODAY + water + some graphs
