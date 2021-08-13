@@ -24,3 +24,5 @@ TODO:
 - allow to update water drinking eg. divide daily requirement by 12 hours and add button 'Done'
 
 - day should be able to hold also products (like meals)
+
+- list of products assigned to meal should be listed in show action instead of edit
