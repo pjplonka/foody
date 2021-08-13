@@ -11,7 +11,7 @@ class DaysController extends Controller
     public function index()
     {
         return view('days.index', [
-            'days' => Day::all()
+            'days' => Day::query()->orderBy('date', 'desc')->get()
         ]);
     }
 
