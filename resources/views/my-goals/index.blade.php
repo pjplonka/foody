@@ -15,7 +15,11 @@
 
                 <div>
                     Protein per day: {{ $myGoal->protein }}g ({{ round((($myGoal->protein * 4) / $myGoal->caloriesPerDay() ) * 100) }}%)<br>
-                    Carbs per day: {{ $myGoal->carbohydrates }}g ({{ round((($myGoal->carbohydrates * 4) / $myGoal->caloriesPerDay() ) * 100) }}%)<br>
+                    Carbs per day:
+                    {{ $myGoal->carbohydrates }}g ({{ round((($myGoal->carbohydrates * 4) / $myGoal->caloriesPerDay() ) * 100) }}%)
+                    - including max. {{ $myGoal->sugar }}g of sugar
+                    <br>
+                    Fiber per day: {{ $myGoal->fiber }}g ({{ round((($myGoal->fiber * 4) / $myGoal->caloriesPerDay() ) * 100) }}%)<br>
                     Fat per day: {{ $myGoal->fat }}g ({{ round((($myGoal->fat * 9) / $myGoal->caloriesPerDay() ) * 100) }}%)<br>
                     -- <br>
                     Calories per day: {{ $myGoal->caloriesPerDay() }}<br>

@@ -73,6 +73,32 @@ class Day extends Model
         return $fromMeals + $fromProducts;
     }
 
+    public function sugar(): float
+    {
+        $fromMeals = $this->meals->sum(function (Meal $meal) {
+            return $meal->sugar();
+        });
+
+        $fromProducts = $this->products->sum(function (Product $product) {
+            return $product->pivot->sugar();
+        });
+
+        return $fromMeals + $fromProducts;
+    }
+
+    public function fiber(): float
+    {
+        $fromMeals = $this->meals->sum(function (Meal $meal) {
+            return $meal->fiber();
+        });
+
+        $fromProducts = $this->products->sum(function (Product $product) {
+            return $product->pivot->fiber();
+        });
+
+        return $fromMeals + $fromProducts;
+    }
+
     public function fat(): float
     {
         $fromMeals = $this->meals->sum(function (Meal $meal) {

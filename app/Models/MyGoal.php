@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $protein
  * @property int $fat
  * @property int $carbohydrates
+ * @property int $sugar
+ * @property int $fiber
  * @property int $water
  * @method static MyGoal create(array $data)
  */
@@ -31,12 +33,14 @@ class MyGoal extends Model
             'protein' => 0,
             'carbohydrates' => 0,
             'fat' => 0,
+            'sugar' => 0,
+            'fiber' => 0,
             'water' => 0,
         ]);
     }
 
     public function caloriesPerDay(): float
     {
-        return CaloriesCalculator::calculate($this->protein, $this->carbohydrates, $this->fat);
+        return CaloriesCalculator::calculate($this->protein, $this->carbohydrates, $this->fat, $this->fiber);
     }
 }

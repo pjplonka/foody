@@ -19,7 +19,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Calories</th>
                         <th scope="col">Protein</th>
-                        <th scope="col">Carbohydrates</th>
+                        <th scope="col">Carbohydrates [sugar]</th>
                         <th scope="col">Fat</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -40,6 +40,7 @@
                             <td>
                                 {{ $meal->carbohydrates() }}
                                 ({{ round(($meal->carbohydrates() / $myGoal->carbohydrates) * 100) }}%)
+                                [{{ $meal->sugar() }}]
                             </td>
                             <td>
                                 {{ $meal->fat() }}

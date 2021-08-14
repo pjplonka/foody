@@ -18,6 +18,19 @@
 ])
 
 @include('common.form.input-text', [
+    'id' => 'sugar',
+    'label' => 'Sugar',
+    'value' => old('sugar') ?: $product->sugar,
+    'hint' => 'Included in Carbs'
+])
+
+@include('common.form.input-text', [
+    'id' => 'fiber',
+    'label' => 'Fiber',
+    'value' => old('fiber') ?: $product->fiber,
+])
+
+@include('common.form.input-text', [
     'id' => 'fat',
     'label' => 'Fat',
     'value' => old('fat') ?: $product->fat

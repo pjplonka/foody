@@ -1,13 +1,7 @@
-TODO:
-
 - Products must have a category: nabiał, mięso etc.
 - Products should contain tags like: wysokobiałkowy etc.
 
 - Route - move meal-products to resource route by hiding meal_id in form
-
-- Add fiber
-
-- Add sugar (carbs includes sugar)
 
 - Edit and delete icon should have tooltip
 
@@ -36,3 +30,11 @@ TODO:
 - dashboard - use common view for day (with days)
 
 - add body dimensions + ask for update (eg. every 7 days) + set goal for body dimension
+
+- create/edit product and my goal - sugar cant be higher than carbs
+
+- product can have nullable fields - if null then its not filled in - put warning there
+
+- add salt (like fiber and sugar)
+
+- product list should show protein, carbs etc.

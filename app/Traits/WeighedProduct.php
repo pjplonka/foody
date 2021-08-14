@@ -27,6 +27,16 @@ trait WeighedProduct
         return $this->product->carbohydrates * ($this->weight / 100);
     }
 
+    public function sugar(): float
+    {
+        return $this->product->sugar * ($this->weight / 100);
+    }
+
+    public function fiber(): float
+    {
+        return $this->product->fiber * ($this->weight / 100);
+    }
+
     public function fat(): float
     {
         return $this->product->fat * ($this->weight / 100);

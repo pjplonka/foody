@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container-fluid">
         @if ($day)
 
         <div class="card mb-3">
@@ -22,8 +22,9 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Protein</th>
-                        <th scope="col">Carbohydrates</th>
+                        <th scope="col">Carbohydrates [sugar]</th>
                         <th scope="col">Fat</th>
+                        <th scope="col">Fiber</th>
                         <th scope="col">Calories</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -37,10 +38,13 @@
                                 {{ $meal->protein() }}
                             </td>
                             <td>
-                                {{ $meal->carbohydrates() }}
+                                {{ $meal->carbohydrates() }} [{{ $meal->sugar() }}]
                             </td>
                             <td>
                                 {{ $meal->fat() }}
+                            </td>
+                            <td>
+                                {{ $meal->fiber() }}
                             </td>
                             <td>
                                 {{ $meal->calories() }}
@@ -65,7 +69,10 @@
                                 {{ $product->pivot->protein() }}
                             </td>
                             <td>
-                                {{ $product->pivot->carbohydrates() }}
+                                {{ $product->pivot->carbohydrates() }} [{{ $product->pivot->sugar() }}]
+                            </td>
+                            <td>
+                                {{ $product->pivot->fiber() }}
                             </td>
                             <td>
                                 {{ $product->pivot->fat() }}
@@ -93,8 +100,9 @@
                         <th scope="col">#</th>
                         <th></th>
                         <th>{{ $day->protein() }}</th>
-                        <th>{{ $day->carbohydrates() }}</th>
+                        <th>{{ $day->carbohydrates() }} [{{ $day->sugar() }}]</th>
                         <th>{{ $day->fat() }}</th>
+                        <th>{{ $day->fiber() }}</th>
                         <th>{{ $day->calories() }}</th>
                         <th></th>
                     </tr>
@@ -104,6 +112,7 @@
                         <td>{{ $myGoal->protein }} ({{ $calc->rounded($myGoal->protein, $day->protein()) }}%)</td>
                         <td>{{ $myGoal->carbohydrates }} ({{ $calc->rounded($myGoal->carbohydrates, $day->carbohydrates()) }}%)</td>
                         <td>{{ $myGoal->fat }} ({{ $calc->rounded($myGoal->fat, $day->fat()) }}%)</td>
+                        <td>{{ $myGoal->fiber }} ({{ $calc->rounded($myGoal->fiber, $day->fiber()) }}%)</td>
                         <td>{{ $myGoal->caloriesPerDay() }} ({{ $calc->rounded($myGoal->caloriesPerDay(), $day->calories()) }}%)</td>
                         <td></td>
                     </tr>

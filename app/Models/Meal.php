@@ -27,29 +27,43 @@ class Meal extends Model
 
     public function calories(): float
     {
-        return $this->products->sum(function($product) {
+        return round($this->products->sum(function(MealProduct $product) {
             return $product->calories();
-        });
+        }));
     }
 
     public function protein(): float
     {
-        return $this->products->sum(function($product) {
+        return round($this->products->sum(function(MealProduct $product) {
             return $product->protein();
-        });
+        }),1);
     }
 
     public function carbohydrates(): float
     {
-        return $this->products->sum(function($product) {
+        return round($this->products->sum(function(MealProduct $product) {
             return $product->carbohydrates();
-        });
+        }),1);
+    }
+
+    public function sugar(): float
+    {
+        return round($this->products->sum(function(MealProduct $product) {
+            return $product->sugar();
+        }),1);
+    }
+
+    public function fiber(): float
+    {
+        return round($this->products->sum(function(MealProduct $product) {
+            return $product->fiber();
+        }),1);
     }
 
     public function fat(): float
     {
-        return $this->products->sum(function($product) {
+        return round($this->products->sum(function(MealProduct $product) {
             return $product->fat();
-        });
+        }), 1);
     }
 }

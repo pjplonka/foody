@@ -13,6 +13,8 @@ class CreateMyGoalsTable extends Migration
             $table->integer('protein');
             $table->integer('fat');
             $table->integer('carbohydrates');
+            $table->integer('sugar');
+            $table->integer('fiber');
             $table->integer('water');
             $table->timestamps();
         });

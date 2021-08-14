@@ -29,6 +29,8 @@ class ProductsController extends Controller
             'protein' => 'required|numeric',
             'carbohydrates' => 'required|numeric',
             'fat' => 'required|numeric',
+            'sugar' => 'required|numeric',
+            'fiber' => 'required|numeric',
         ]);
 
         Product::create($payload);
@@ -51,6 +53,8 @@ class ProductsController extends Controller
             'protein' => 'required|numeric',
             'carbohydrates' => 'required|numeric',
             'fat' => 'required|numeric',
+            'sugar' => 'required|numeric',
+            'fiber' => 'required|numeric',
         ]);
 
         $product->update($payload);

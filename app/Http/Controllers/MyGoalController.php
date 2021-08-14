@@ -27,6 +27,8 @@ class MyGoalController extends Controller
             'protein' => 'required|numeric',
             'carbohydrates' => 'required|numeric',
             'fat' => 'required|numeric',
+            'sugar' => 'required|numeric',
+            'fiber' => 'required|numeric',
             'water' => 'required|numeric',
         ]);
 

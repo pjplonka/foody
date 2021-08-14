@@ -13,6 +13,19 @@
 ])
 
 @include('common.form.input-text', [
+    'id' => 'sugar',
+    'label' => 'Sugar',
+    'value' => old('sugar') ?: $myGoal->sugar,
+    'hint' => 'Included in Carbs'
+])
+
+@include('common.form.input-text', [
+    'id' => 'fiber',
+    'label' => 'Fiber',
+    'value' => old('fiber') ?: $myGoal->fiber,
+])
+
+@include('common.form.input-text', [
     'id' => 'fat',
     'label' => 'Fat',
     'hint' => 'Fat per day.',

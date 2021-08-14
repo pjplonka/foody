@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $protein
  * @property int $fat
  * @property int $carbohydrates
+ * @property int $sugar
+ * @property int $fiber
  * @method static Product create(array $data)
  * @mixin Builder
  */
@@ -23,6 +25,6 @@ class Product extends Model
 
     public function calories(): int
     {
-        return CaloriesCalculator::calculate($this->protein, $this->carbohydrates, $this->fat);
+        return CaloriesCalculator::calculate($this->protein, $this->carbohydrates, $this->fat, $this->fiber);
     }
 }
