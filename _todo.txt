@@ -1,40 +1,27 @@
-- Products must have a category: nabiał, mięso etc.
-- Products should contain tags like: wysokobiałkowy etc.
-
-- Route - move meal-products to resource route by hiding meal_id in form
-
-- Edit and delete icon should have tooltip
-
-- Add breadcrumbs
-
-- need to separate protein from animal and plant etc. and count it together but mention how many on each source
-
+Prio 1:
 - adding meal to day should be standalone meal in database (customizable). Maybe it should be : add from predefined, add from scratch
-
-- modals should appear definitely
-
-- all destroy views should hold @csrf and @method('delete')
-
-- allow to update water drinking eg. divide daily requirement by 12 hours and add button 'Done'
-
-- day should be able to hold also products (like meals)
-
-- list of products assigned to meal should be listed in show action instead of edit
-
 - add button and style to right top corner links
 
+Prio 2:
+- Edit and delete icon should have tooltip
+- Add breadcrumbs
+- all destroy views should hold @csrf and @method('delete')
+- allow to update water drinking eg. divide daily requirement by 12 hours and add button 'Done'
+- list of products assigned to meal should be listed in show action instead of edit
+- product can have nullable fields - if null then its not filled in - put warning there
+- product list should show protein, carbs etc.
 - add select2 (or similar) to better search products and meals
 
-- create dashboard with TODAY + water + some graphs
-
-- dashboard - use common view for day (with days)
-
-- add body dimensions + ask for update (eg. every 7 days) + set goal for body dimension
-
+Prio 3:
+- Route - move meal-products to resource route by hiding meal_id in form
+- add salt (like fiber and sugar)
+- Products must have a category: nabiał, mięso etc.
+- Products should contain tags like: wysokobiałkowy etc.
+- dashboard - use common view (probably only table) for day (with days)
 - create/edit product and my goal - sugar cant be higher than carbs
 
-- product can have nullable fields - if null then its not filled in - put warning there
-
-- add salt (like fiber and sugar)
-
-- product list should show protein, carbs etc.
+To consider:
+- create dashboard with TODAY + water + some graphs
+- modals should appear definitely
+- need to separate protein from animal and plant etc. and count it together but mention how many on each source
+- add body dimensions + ask for update (eg. every 7 days) + set goal for body dimension
