@@ -1,6 +1,6 @@
 Prio 1:
 - adding meal to day should be standalone meal in database (customizable). Maybe it should be : add from predefined, add from scratch
-- add button and style to right top corner links
+- Use card component in every view module
 
 Prio 2:
 - Edit and delete icon should have tooltip
