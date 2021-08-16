@@ -54,10 +54,10 @@
                 {{ $product->pivot->carbohydrates() }} [{{ $product->pivot->sugar() }}]
             </td>
             <td>
-                {{ $product->pivot->fiber() }}
+                {{ $product->pivot->fat() }}
             </td>
             <td>
-                {{ $product->pivot->fat() }}
+                {{ $product->pivot->fiber() }}
             </td>
             <td>
                 {{ $product->pivot->calories() }}
