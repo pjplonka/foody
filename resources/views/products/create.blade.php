@@ -10,18 +10,15 @@
 
             @csrf
 
-            <div class="card">
-                <div class="card-header">
-                    <span>Create new product</span>
-                </div>
-                <div class="card-body">
+            <x-card title="Create new product">
+                <slot>
                     @include('products.form')
-                </div>
-                <div class="card-footer">
+                </slot>
+                <x-slot name="footer">
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     <a href="{{ route('products.index') }}" type="button" class="btn btn-secondary">Cancel</a>
-                </div>
-            </div>
+                </x-slot>
+            </x-card>
 
         </form>
 
