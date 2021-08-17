@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -24,9 +25,9 @@ class Day extends Model
 
     protected $casts = ['date' => 'datetime'];
 
-    public function meals(): BelongsToMany
+    public function meals(): HasMany
     {
-        return $this->belongsToMany(Meal::class);
+        return $this->hasMany(Day\Meal::class);
     }
 
     public function products(): BelongsToMany
@@ -36,7 +37,7 @@ class Day extends Model
 
     public function calories(): float
     {
-        $fromMeals = $this->meals->sum(function (Meal $meal) {
+        $fromMeals = $this->meals->sum(function (Day\Meal $meal) {
             return $meal->calories();
         });
 
@@ -49,7 +50,7 @@ class Day extends Model
 
     public function protein(): float
     {
-        $fromMeals = $this->meals->sum(function (Meal $meal) {
+        $fromMeals = $this->meals->sum(function (Day\Meal $meal) {
             return $meal->protein();
         });
 
@@ -62,7 +63,7 @@ class Day extends Model
 
     public function carbohydrates(): float
     {
-        $fromMeals = $this->meals->sum(function (Meal $meal) {
+        $fromMeals = $this->meals->sum(function (Day\Meal $meal) {
             return $meal->carbohydrates();
         });
 
@@ -75,7 +76,7 @@ class Day extends Model
 
     public function sugar(): float
     {
-        $fromMeals = $this->meals->sum(function (Meal $meal) {
+        $fromMeals = $this->meals->sum(function (Day\Meal $meal) {
             return $meal->sugar();
         });
 
@@ -88,7 +89,7 @@ class Day extends Model
 
     public function fiber(): float
     {
-        $fromMeals = $this->meals->sum(function (Meal $meal) {
+        $fromMeals = $this->meals->sum(function (Day\Meal $meal) {
             return $meal->fiber();
         });
 
@@ -101,7 +102,7 @@ class Day extends Model
 
     public function fat(): float
     {
-        $fromMeals = $this->meals->sum(function (Meal $meal) {
+        $fromMeals = $this->meals->sum(function (Day\Meal $meal) {
             return $meal->fat();
         });
 

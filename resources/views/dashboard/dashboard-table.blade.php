@@ -1,8 +1,13 @@
-<table class="table table-borderless custom-table">
-    <thead>
+<style>
+    .product-row {
+        font-size: 85%;
+    }
+</style>
+
+<table class="table table-bordered table-hover table-custom">
+    <thead style="margin-bottom: 20px;">
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
+        <th scope="col"></th>
         <th scope="col">Protein</th>
         <th scope="col">Carbohydrates [sugar]</th>
         <th scope="col">Fat</th>
@@ -13,27 +18,21 @@
     </thead>
     <tbody>
     @foreach ($day->meals as $meal)
-        <tr>
-            <th scope="row">{{ $meal->id }}</th>
+        <tr style="background-color: #f9f9f9;">
             <td>{{ $meal->name }}</td>
-            <td>
-                {{ $meal->protein() }}
+            <td>{{ $meal->protein() }} ({{ $calc->rounded($myGoal->protein, $meal->protein()) }}%)</td>
+            <td>{{ $meal->carbohydrates() }} [{{ $meal->sugar() }}]
+                ({{ $calc->rounded($myGoal->carbohydrates, $meal->carbohydrates()) }}%
+                [{{ $calc->rounded($myGoal->sugar, $meal->sugar()) }}%])
             </td>
-            <td>
-                {{ $meal->carbohydrates() }} [{{ $meal->sugar() }}]
-            </td>
-            <td>
-                {{ $meal->fat() }}
-            </td>
-            <td>
-                {{ $meal->fiber() }}
-            </td>
-            <td>
-                {{ $meal->calories() }}
-            </td>
+            <td>{{ $meal->fat() }}</td>
+            <td>{{ $meal->fiber() }}</td>
+            <td>{{ $meal->calories() }}</td>
             <td class="actions">
+                <a href="{{ route('day-meal-products.create', ['day' => $day, 'meal' => $meal]) }}"
+                   class="mr-2"><i class="bi-plus-circle icon"></i></a>
                 <form method="post" style="display: inline"
-                      action="{{ route('day-meals.destroy', ['day' => $day, 'mealId' => $meal->id]) }}">
+                      action="{{ route('day-meals.destroy', ['meal' => $meal]) }}">
                     @csrf
                     @method('delete')
                     <button class="delete-prompt" type="submit"
@@ -42,45 +41,34 @@
                 </form>
             </td>
         </tr>
-    @endforeach
-    @foreach ($day->products as $product)
-        <tr>
-            <th scope="row">{{ $product->id }}</th>
-            <td>{{ $product->name }} <small>({{ $product->pivot->weight }}g)</small></td>
-            <td>
-                {{ $product->pivot->protein() }}
-            </td>
-            <td>
-                {{ $product->pivot->carbohydrates() }} [{{ $product->pivot->sugar() }}]
-            </td>
-            <td>
-                {{ $product->pivot->fat() }}
-            </td>
-            <td>
-                {{ $product->pivot->fiber() }}
-            </td>
-            <td>
-                {{ $product->pivot->calories() }}
-            </td>
-            <td class="actions">
-                <a href="{{ route('day-products.edit', ['dayProduct' => $product->pivot]) }}" class="mr-2"><i
-                        class="bi-pencil icon"></i></a>
-                <form method="post" style="display: inline"
-                      action="{{ route('day-products.destroy', ['day' => $day, 'productId' => $product->id]) }}">
-                    @csrf
-                    @method('delete')
-                    <button class="delete-prompt" type="submit"
-                            style="border:none; background: none; cursor:pointer;"><i
-                            class="bi-trash icon"></i></button>
-                </form>
-            </td>
-        </tr>
+        @foreach($meal->products as $product)
+            <tr>
+                <td class="product-row" style="padding-left:50px;">{{ $product->name() }}
+                    <small>({{ $product->weight }})g</small></td>
+                <td class="product-row">{{ $product->protein() }}</td>
+                <td class="product-row">{{ $product->carbohydrates() }} [{{ $meal->sugar() }}]</td>
+                <td class="product-row">{{ $product->fat() }}</td>
+                <td class="product-row">{{ $product->fiber() }}</td>
+                <td class="product-row">{{ $product->calories() }}</td>
+                <td class="actions">
+                    <a href="{{ route('day-products.edit', ['product' => $product]) }}" class="mr-2"><i
+                            class="bi-pencil icon"></i></a>
+                    <form method="post" style="display: inline"
+                          action="{{ route('day-products.destroy', ['product' => $product]) }}">
+                        @csrf
+                        @method('delete')
+                        <button class="delete-prompt" type="submit"
+                                style="border:none; background: none; cursor:pointer;"><i
+                                class="bi-trash icon"></i></button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
     @endforeach
     </tbody>
     <tfoot>
     <tr>
-        <th scope="col">#</th>
-        <th></th>
+        <th>Podsumowanie dnia</th>
         <th>{{ $day->protein() }}</th>
         <th>{{ $day->carbohydrates() }} [{{ $day->sugar() }}]</th>
         <th>{{ $day->fat() }}</th>
@@ -89,14 +77,15 @@
         <th></th>
     </tr>
     <tr>
-        <th scope="col">#</th>
-        <td></td>
-        <td>{{ $myGoal->protein }} ({{ $calc->rounded($myGoal->protein, $day->protein()) }}%)</td>
-        <td>{{ $myGoal->carbohydrates }} ({{ $calc->rounded($myGoal->carbohydrates, $day->carbohydrates()) }}%)</td>
-        <td>{{ $myGoal->fat }} ({{ $calc->rounded($myGoal->fat, $day->fat()) }}%)</td>
-        <td>{{ $myGoal->fiber }} ({{ $calc->rounded($myGoal->fiber, $day->fiber()) }}%)</td>
-        <td>{{ $myGoal->caloriesPerDay() }} ({{ $calc->rounded($myGoal->caloriesPerDay(), $day->calories()) }}%)</td>
-        <td></td>
+        <th>Dzienny cel (% realizacji celu)</th>
+        <th>{{ $myGoal->protein }} ({{ $calc->rounded($myGoal->protein, $day->protein()) }}%)</th>
+        <th>{{ $myGoal->carbohydrates }} ({{ $calc->rounded($myGoal->carbohydrates, $day->carbohydrates()) }}%)
+        </th>
+        <th>{{ $myGoal->fat }} ({{ $calc->rounded($myGoal->fat, $day->fat()) }}%)</th>
+        <th>{{ $myGoal->fiber }} ({{ $calc->rounded($myGoal->fiber, $day->fiber()) }}%)</th>
+        <th>{{ $myGoal->caloriesPerDay() }} ({{ $calc->rounded($myGoal->caloriesPerDay(), $day->calories()) }}%)
+        </th>
+        <th></th>
     </tr>
     </tfoot>
 </table>

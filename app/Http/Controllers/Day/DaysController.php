@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Day;
 
+use App\Http\Controllers\Controller;
 use App\Models\Day;
 use App\Models\MyGoal;
 use Illuminate\Http\Request;

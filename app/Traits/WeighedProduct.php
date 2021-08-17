@@ -12,6 +12,11 @@ trait WeighedProduct
         return $this->belongsTo(Product::class);
     }
 
+    public function name(): string
+    {
+        return $this->product->name;
+    }
+
     public function calories(): float
     {
         return $this->product->calories() * ($this->weight / 100);

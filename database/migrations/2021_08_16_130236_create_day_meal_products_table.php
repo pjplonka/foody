@@ -4,15 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDayProductTable extends Migration
+class CreateDayMealProductsTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('day_product', function (Blueprint $table) {
+        Schema::create('day_meal_products', function (Blueprint $table) {
             $table->id();
-            $table->string('meal_name')->nullable();
-            $table->foreignId('day_id')->constrained();
             $table->foreignId('product_id')->constrained();
+            $table->foreignId('meal_id')->constrained('day_meals');
             $table->integer('weight');
             $table->timestamps();
         });
@@ -20,6 +19,6 @@ class CreateDayProductTable extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('day_product');
+        Schema::dropIfExists('day_meal_products');
     }
 }

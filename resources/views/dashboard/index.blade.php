@@ -12,9 +12,6 @@
             <x-card title="Meals and products for today">
                 <x-slot name="headerWidgets">
                     <a class="btn btn-primary mr-3" href="{{ route('day-meals.create', ['day' => $day]) }}">Add meal</a>
-                    <a class="btn btn-primary" href="{{ route('day-products.create', ['day' => $day]) }}">
-                        Add product
-                    </a>
                 </x-slot>
                 <slot>
                     @include('dashboard.dashboard-table', ['day' => $day])

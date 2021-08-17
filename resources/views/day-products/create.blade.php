@@ -6,7 +6,7 @@
 
     <div class="container">
 
-        <form method="POST" action="{{ route('day-products.store', ['day' => $day]) }}">
+        <form method="POST" action="{{ route('day-meal-products.store', ['day' => $day, 'meal' => $meal]) }}">
 
             @csrf
 

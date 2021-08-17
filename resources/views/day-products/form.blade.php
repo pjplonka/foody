@@ -1,7 +1,7 @@
 @include('common.form.select', [
     'id' => 'product_id',
     'label' => 'Product',
-    'value' => old('product_id') ?: $dayProduct->product_id,
+    'value' => old('product_id') ?: $product->product_id,
     'default' => 'Select product',
     'hint' => 'Product name.',
     'options' => $products->map(function ($product) {
@@ -12,5 +12,5 @@
 @include('common.form.input-text', [
     'id' => 'weight',
     'label' => 'Weight',
-    'value' => old('weight') ?: $dayProduct->weight
+    'value' => old('weight') ?: $product->weight
 ])

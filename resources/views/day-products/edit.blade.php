@@ -6,7 +6,7 @@
 
     <div class="container">
 
-        <form method="POST" action="{{ route('day-products.update', ['dayProduct' => $dayProduct]) }}">
+        <form method="POST" action="{{ route('day-products.update', ['product' => $product]) }}">
 
             @method('put')
             @csrf
@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <a href="{{ route('days.show', ['day' => $dayProduct->day]) }}" type="button" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('days.show', ['day' => $product->meal->day]) }}" type="button" class="btn btn-secondary">Cancel</a>
                 </div>
             </div>
 
