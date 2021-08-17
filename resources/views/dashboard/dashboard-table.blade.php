@@ -20,14 +20,16 @@
     @foreach ($day->meals as $meal)
         <tr style="background-color: #f9f9f9;">
             <td>{{ $meal->name }}</td>
-            <td>{{ $meal->protein() }} ({{ $calc->rounded($myGoal->protein, $meal->protein()) }}%)</td>
-            <td>{{ $meal->carbohydrates() }} [{{ $meal->sugar() }}]
-                ({{ $calc->rounded($myGoal->carbohydrates, $meal->carbohydrates()) }}%
-                [{{ $calc->rounded($myGoal->sugar, $meal->sugar()) }}%])
+            <td>{{ $meal->protein() }} <small>({{ $calc->rounded($myGoal->protein, $meal->protein()) }}%)</small></td>
+            <td>
+                {{ $meal->carbohydrates() }} [{{ $meal->sugar() }}]
+                <small>
+                    ({{ $calc->rounded($myGoal->carbohydrates, $meal->carbohydrates()) }}% [{{ $calc->rounded($myGoal->sugar, $meal->sugar()) }}%])
+                </small>
             </td>
-            <td>{{ $meal->fat() }}</td>
-            <td>{{ $meal->fiber() }}</td>
-            <td>{{ $meal->calories() }}</td>
+            <td>{{ $meal->fat() }} <small>({{ $calc->rounded($myGoal->fat, $meal->fat()) }}%)</small></td>
+            <td>{{ $meal->fiber() }} <small>({{ $calc->rounded($myGoal->fiber, $meal->fiber()) }}%)</small></td>
+            <td>{{ $meal->calories() }} <small>({{ $calc->rounded($myGoal->caloriesPerDay(), $meal->calories()) }}%)</small></td>
             <td class="actions">
                 <a href="{{ route('day-meal-products.create', ['day' => $day, 'meal' => $meal]) }}"
                    class="mr-2"><i class="bi-plus-circle icon"></i></a>
@@ -44,7 +46,7 @@
         @foreach($meal->products as $product)
             <tr>
                 <td class="product-row" style="padding-left:50px;">{{ $product->name() }}
-                    <small>({{ $product->weight }})g</small></td>
+                    <small>({{ $product->weight }}g)</small></td>
                 <td class="product-row">{{ $product->protein() }}</td>
                 <td class="product-row">{{ $product->carbohydrates() }} [{{ $meal->sugar() }}]</td>
                 <td class="product-row">{{ $product->fat() }}</td>
@@ -78,12 +80,16 @@
     </tr>
     <tr>
         <th>Dzienny cel (% realizacji celu)</th>
-        <th>{{ $myGoal->protein }} ({{ $calc->rounded($myGoal->protein, $day->protein()) }}%)</th>
-        <th>{{ $myGoal->carbohydrates }} ({{ $calc->rounded($myGoal->carbohydrates, $day->carbohydrates()) }}%)
+        <th>{{ $myGoal->protein }} <small>({{ $calc->rounded($myGoal->protein, $day->protein()) }}%)</small></th>
+        <th>
+            {{ $myGoal->carbohydrates }}
+            <small>({{ $calc->rounded($myGoal->carbohydrates, $day->carbohydrates()) }}%)</small>
         </th>
-        <th>{{ $myGoal->fat }} ({{ $calc->rounded($myGoal->fat, $day->fat()) }}%)</th>
-        <th>{{ $myGoal->fiber }} ({{ $calc->rounded($myGoal->fiber, $day->fiber()) }}%)</th>
-        <th>{{ $myGoal->caloriesPerDay() }} ({{ $calc->rounded($myGoal->caloriesPerDay(), $day->calories()) }}%)
+        <th>{{ $myGoal->fat }} <small>({{ $calc->rounded($myGoal->fat, $day->fat()) }}%)</small></th>
+        <th>{{ $myGoal->fiber }} <small>({{ $calc->rounded($myGoal->fiber, $day->fiber()) }}%)</small></th>
+        <th>
+            {{ $myGoal->caloriesPerDay() }}
+            <small>({{ $calc->rounded($myGoal->caloriesPerDay(), $day->calories()) }}%)</small>
         </th>
         <th></th>
     </tr>
