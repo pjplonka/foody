@@ -9,7 +9,7 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('users')->insert([
+        DB::table('products')->insert([
             'name' => 'Ryż biały (surowy)',
             'protein' => 7.4,
             'fat' => 0,
