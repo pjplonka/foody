@@ -1,0 +1,5 @@
+AddType application/x-httpd-php71 .php
+
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !^public
+RewriteRule ^(.*)$ public/$1 [L]
