@@ -48,7 +48,7 @@
                 <td class="product-row" style="padding-left:50px;">{{ $product->name() }}
                     <small>({{ $product->weight }}g)</small></td>
                 <td class="product-row">{{ $product->protein() }}</td>
-                <td class="product-row">{{ $product->carbohydrates() }} [{{ $meal->sugar() }}]</td>
+                <td class="product-row">{{ $product->carbohydrates() }} [{{ $product->sugar() }}]</td>
                 <td class="product-row">{{ $product->fat() }}</td>
                 <td class="product-row">{{ $product->fiber() }}</td>
                 <td class="product-row">{{ $product->calories() }}</td>
