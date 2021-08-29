@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\DB;
 class ProductSeeder extends Seeder
 {
     public $products = [
-        'Ryż biały (surowy)', 7.4, 0, 79, 0, 0,
-        'Filet z piersi z indyka bez skóry (surowy)', 22, 2, 79, 0, 0,
+        ['Ryż biały (surowy)', 7.4, 0, 79, 0, 0],
+        ['Filet z piersi z indyka bez skóry (surowy)', 22, 2, 0, 0, 0],
     ];
 
     public function run(): void
