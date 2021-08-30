@@ -1,3 +1,5 @@
+@inject('calc', 'App\Services\PercentageCalculator')
+
 @extends('common.layouts.main')
 
 @section('title', 'My goal')
@@ -14,13 +16,20 @@
             <div class="card-body">
 
                 <div>
-                    Protein per day: {{ $myGoal->protein }}g ({{ round((($myGoal->protein * 4) / $myGoal->caloriesPerDay() ) * 100) }}%)<br>
+                    Protein per day: {{ $myGoal->protein }}g
+                    ({{ $calc->rounded($myGoal->caloriesPerDay(), $myGoal->proteinCaloriesPerDay()) }}%)
+                    <br>
                     Carbs per day:
-                    {{ $myGoal->carbohydrates }}g ({{ round((($myGoal->carbohydrates * 4) / $myGoal->caloriesPerDay() ) * 100) }}%)
+                    {{ $myGoal->carbohydrates }}g
+                    ({{ $calc->rounded($myGoal->caloriesPerDay(), $myGoal->carbsCaloriesPerDay()) }}%)
                     - including max. {{ $myGoal->sugar }}g of sugar
                     <br>
-                    Fiber per day: {{ $myGoal->fiber }}g ({{ round((($myGoal->fiber * 4) / $myGoal->caloriesPerDay() ) * 100) }}%)<br>
-                    Fat per day: {{ $myGoal->fat }}g ({{ round((($myGoal->fat * 9) / $myGoal->caloriesPerDay() ) * 100) }}%)<br>
+                    Fiber per day: {{ $myGoal->fiber }}g
+                    ({{ $calc->rounded($myGoal->caloriesPerDay(), $myGoal->fiberCaloriesPerDay()) }}%)
+                    <br>
+                    Fat per day: {{ $myGoal->fat }}g
+                    ({{ $calc->rounded($myGoal->caloriesPerDay(), $myGoal->fatCaloriesPerDay()) }}%)
+                    <br>
                     -- <br>
                     Calories per day: {{ $myGoal->caloriesPerDay() }}<br>
                 </div>

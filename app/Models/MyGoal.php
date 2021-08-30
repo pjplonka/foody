@@ -43,4 +43,24 @@ class MyGoal extends Model
     {
         return CaloriesCalculator::calculate($this->protein, $this->carbohydrates, $this->fat, $this->fiber);
     }
+
+    public function proteinCaloriesPerDay(): float
+    {
+        return $this->protein * 4;
+    }
+
+    public function carbsCaloriesPerDay(): float
+    {
+        return $this->carbohydrates * 4;
+    }
+
+    public function fiberCaloriesPerDay(): float
+    {
+        return $this->fiber * 4;
+    }
+
+    public function fatCaloriesPerDay(): float
+    {
+        return $this->fat * 9;
+    }
 }
