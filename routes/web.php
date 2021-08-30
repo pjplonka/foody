@@ -24,6 +24,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::redirect('/', '/dashboard');
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('users', UsersController::class);
