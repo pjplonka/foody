@@ -6,7 +6,7 @@ class PercentageCalculator
 {
     public function rounded($max, $part)
     {
-        if ($max === 0) {
+        if ($max === 0 || $max === '0') {
             return 0;
         }
 
