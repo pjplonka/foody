@@ -21,6 +21,8 @@ class MealProduct extends Model
 {
     use WeighedProduct;
 
+    protected $table = 'meal_products';
+
     protected $guarded = ['id'];
 
     public function meal(): BelongsTo
