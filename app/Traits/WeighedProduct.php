@@ -19,7 +19,7 @@ trait WeighedProduct
 
     public function calories(): float
     {
-        return $this->product->calories() * ($this->weight / 100);
+        return $this->product->calories * ($this->weight / 100);
     }
 
     public function protein(): float
@@ -45,5 +45,15 @@ trait WeighedProduct
     public function fat(): float
     {
         return $this->product->fat * ($this->weight / 100);
+    }
+
+    public function saturatedFat(): float
+    {
+        return $this->product->saturated_fat * ($this->weight / 100);
+    }
+
+    public function sodium(): float
+    {
+        return $this->product->sodium * ($this->weight / 100);
     }
 }

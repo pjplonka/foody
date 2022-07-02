@@ -10,6 +10,7 @@
 
         <x-card title="Meals and products for day {{ $day->date->format('d-m-Y') }}">
             <x-slot name="headerWidgets">
+                <a class="btn btn-secondary mr-3" href="{{ route('export.day', ['day' => $day]) }}">Export</a>
                 <a class="btn btn-primary mr-3" href="{{ route('day-meals.create', ['day' => $day]) }}">Add meal</a>
             </x-slot>
             <slot>

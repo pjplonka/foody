@@ -72,4 +72,18 @@ class DayMeal extends Model
             return $product->fat();
         }), 1);
     }
+
+    public function saturatedFat(): float
+    {
+        return round($this->products->sum(function(MealProduct $product) {
+            return $product->saturatedFat();
+        }), 1);
+    }
+
+    public function sodium(): float
+    {
+        return round($this->products->sum(function(MealProduct $product) {
+            return $product->sodium();
+        }), 1);
+    }
 }

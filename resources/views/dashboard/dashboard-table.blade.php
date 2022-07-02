@@ -46,7 +46,11 @@
         @foreach($meal->products as $product)
             <tr>
                 <td class="product-row" style="padding-left:50px;">{{ $product->name() }}
-                    <small>({{ $product->weight }}g)</small></td>
+                    <small>({{ $product->weight }}g)</small>
+                    @if (!$product->calories())
+                        <i class="bi bi-exclamation-octagon-fill icon text-danger"></i>
+                    @endif
+                </td>
                 <td class="product-row">{{ $product->protein() }}</td>
                 <td class="product-row">{{ $product->carbohydrates() }} [{{ $product->sugar() }}]</td>
                 <td class="product-row">{{ $product->fat() }}</td>

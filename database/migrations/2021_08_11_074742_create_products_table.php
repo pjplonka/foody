@@ -11,11 +11,14 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('protein');
-            $table->integer('fat');
-            $table->integer('carbohydrates');
-            $table->integer('sugar');
-            $table->integer('fiber');
+            $table->float('calories')->nullable();
+            $table->float('protein')->nullable();
+            $table->float('fat')->nullable();
+            $table->float('saturated_fat')->nullable();
+            $table->float('carbohydrates')->nullable();
+            $table->float('sugar')->nullable();
+            $table->float('fiber')->nullable();
+            $table->float('sodium')->nullable();
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Models\Day;
 
 use App\Models\Day;
+use App\Models\MealProduct;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -74,6 +75,20 @@ class Meal extends Model
     {
         return round($this->products->sum(function (Product $product) {
             return $product->fat();
+        }), 1);
+    }
+
+    public function saturatedFat(): float
+    {
+        return round($this->products->sum(function(Product $product) {
+            return $product->saturatedFat();
+        }), 1);
+    }
+
+    public function sodium(): float
+    {
+        return round($this->products->sum(function(Product $product) {
+            return $product->sodium();
         }), 1);
     }
 }

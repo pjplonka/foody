@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Day\DaysController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\MealProductController;
 use App\Http\Controllers\MealsController;
 use App\Http\Controllers\MyGoalController;
@@ -50,3 +51,7 @@ Route::post('/days/{day}/meals/{meal}/products', [\App\Http\Controllers\Day\Prod
 Route::delete('/day-products/{product}', [\App\Http\Controllers\Day\ProductsController::class, 'destroy'])->name('day-products.destroy');
 Route::get('day-products/{product}', [\App\Http\Controllers\Day\ProductsController::class, 'edit'])->name('day-products.edit');
 Route::put('day-products/{product}', [\App\Http\Controllers\Day\ProductsController::class, 'update'])->name('day-products.update');
+
+// Export
+Route::get('/export/days/{day}', [ExportController::class, 'day'])->name('export.day');
+Route::get('/export/days', [ExportController::class, 'days'])->name('export.days');

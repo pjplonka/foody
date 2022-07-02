@@ -112,4 +112,30 @@ class Day extends Model
 
         return $fromMeals + $fromProducts;
     }
+
+    public function saturatedFat(): float
+    {
+        $fromMeals = $this->meals->sum(function (Day\Meal $meal) {
+            return $meal->saturatedFat();
+        });
+
+        $fromProducts = $this->products->sum(function (Product $product) {
+            return $product->pivot->saturatedFat();
+        });
+
+        return $fromMeals + $fromProducts;
+    }
+
+    public function sodium(): float
+    {
+        $fromMeals = $this->meals->sum(function (Day\Meal $meal) {
+            return $meal->sodium();
+        });
+
+        $fromProducts = $this->products->sum(function (Product $product) {
+            return $product->pivot->sodium();
+        });
+
+        return $fromMeals + $fromProducts;
+    }
 }

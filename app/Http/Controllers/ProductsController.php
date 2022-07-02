@@ -26,11 +26,14 @@ class ProductsController extends Controller
     {
         $payload = $request->validate([
             'name' => 'required|string',
+            'calories' => 'required|numeric',
             'protein' => 'required|numeric',
             'carbohydrates' => 'required|numeric',
             'fat' => 'required|numeric',
+            'saturated_fat' => 'required|numeric',
             'sugar' => 'required|numeric',
             'fiber' => 'required|numeric',
+            'sodium' => 'required|numeric',
         ]);
 
         Product::create($payload);
@@ -50,11 +53,14 @@ class ProductsController extends Controller
     {
         $payload = $request->validate([
             'name' => 'required|string',
+            'calories' => 'required|numeric',
             'protein' => 'required|numeric',
             'carbohydrates' => 'required|numeric',
             'fat' => 'required|numeric',
+            'saturated_fat' => 'required|numeric',
             'sugar' => 'required|numeric',
             'fiber' => 'required|numeric',
+            'sodium' => 'required|numeric',
         ]);
 
         $product->update($payload);
